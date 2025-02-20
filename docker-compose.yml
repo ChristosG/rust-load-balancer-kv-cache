@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  load_balancer:
+    build: ./lb
+    ports:
+      - "8080:8080"
+    restart: always
+    environment:
+      - RUST_LOG=info
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    restart: always
